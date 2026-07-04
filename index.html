@@ -3,79 +3,194 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Privacy Policy – Moja: Focus</title>
+  <title>Moja: Focus – One Thing at a Time</title>
+  <meta name="description" content="Moja is a radical focus app. Not a list. Not a system. Just one thing at a time.">
   <style>
-    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; max-width: 760px; margin: 40px auto; padding: 0 24px; color: #1c1c1e; line-height: 1.7; }
-    h1 { font-size: 2rem; font-weight: 700; margin-bottom: 4px; }
-    h2 { font-size: 1.2rem; font-weight: 600; margin-top: 36px; }
-    p, li { font-size: 1rem; color: #3a3a3c; }
-    a { color: #007aff; }
-    .updated { color: #8e8e93; font-size: 0.9rem; margin-bottom: 32px; }
-    hr { border: none; border-top: 1px solid #e5e5ea; margin: 40px 0; }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0a0a0a;
+      --surface: #111111;
+      --border: #1c1c1e;
+      --purple: #a78bfa;
+      --purple-dim: #7c3aed;
+      --text: #f5f5f7;
+      --text-secondary: #aeaeb2;
+      --text-dim: #636366;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', sans-serif; line-height: 1.6; overflow-x: hidden; }
+
+    /* NAV */
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 0 40px; height: 60px; display: flex; align-items: center; justify-content: space-between; background: rgba(10,10,10,0.85); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); }
+    .nav-logo { font-size: 1.1rem; font-weight: 700; letter-spacing: -0.02em; color: var(--text); text-decoration: none; }
+    .nav-logo span { color: var(--purple); }
+    .nav-links { display: flex; gap: 32px; }
+    .nav-links a { color: var(--text-secondary); text-decoration: none; font-size: 0.9rem; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--text); }
+
+    /* HERO */
+    .hero { min-height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; padding: 100px 24px 80px; position: relative; overflow: hidden; }
+    .hero-glow { position: absolute; top: 20%; left: 50%; transform: translateX(-50%); width: 600px; height: 600px; background: radial-gradient(ellipse, rgba(124,58,237,0.15) 0%, transparent 70%); pointer-events: none; }
+    .hero-content { position: relative; z-index: 1; max-width: 680px; }
+    .hero-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(167,139,250,0.1); border: 1px solid rgba(167,139,250,0.25); border-radius: 100px; padding: 6px 16px; font-size: 0.8rem; color: var(--purple); margin-bottom: 32px; letter-spacing: 0.05em; text-transform: uppercase; font-weight: 600; }
+    .hero h1 { font-size: clamp(2.8rem, 7vw, 5rem); font-weight: 800; letter-spacing: -0.04em; line-height: 1.05; margin-bottom: 24px; }
+    .hero h1 em { font-style: normal; color: var(--purple); }
+    .hero p { font-size: 1.2rem; color: var(--text-secondary); max-width: 480px; margin: 0 auto 48px; line-height: 1.6; }
+    .hero-cta { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+    .btn-primary { display: inline-flex; align-items: center; gap: 10px; background: var(--purple); color: #fff; text-decoration: none; padding: 14px 28px; border-radius: 14px; font-weight: 600; font-size: 1rem; transition: background 0.2s, transform 0.15s; }
+    .btn-primary:hover { background: #8b5cf6; transform: translateY(-1px); }
+    .btn-secondary { display: inline-flex; align-items: center; gap: 10px; background: var(--surface); border: 1px solid var(--border); color: var(--text); text-decoration: none; padding: 14px 28px; border-radius: 14px; font-weight: 600; font-size: 1rem; transition: border-color 0.2s, transform 0.15s; }
+    .btn-secondary:hover { border-color: var(--purple); transform: translateY(-1px); }
+
+    /* APP PREVIEW */
+    .preview { padding: 40px 24px 100px; display: flex; justify-content: center; }
+    .phone-frame { width: 260px; height: 520px; background: var(--surface); border-radius: 44px; border: 1px solid var(--border); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 20px; box-shadow: 0 40px 80px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.04); position: relative; overflow: hidden; }
+    .phone-frame::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 200px; background: radial-gradient(ellipse at 50% 0%, rgba(124,58,237,0.2), transparent 70%); }
+    .phone-dot { width: 72px; height: 72px; background: var(--purple); border-radius: 50%; opacity: 0.9; box-shadow: 0 0 40px rgba(124,58,237,0.5); }
+    .phone-task { font-size: 1.1rem; font-weight: 600; color: var(--text); letter-spacing: -0.02em; }
+    .phone-sub { font-size: 0.8rem; color: var(--text-dim); }
+    .phone-streak { display: flex; gap: 6px; margin-top: 8px; }
+    .phone-streak span { width: 8px; height: 8px; border-radius: 50%; background: var(--purple); opacity: 0.7; }
+    .phone-streak span:last-child { opacity: 0.25; }
+
+    /* FEATURES */
+    .features { padding: 80px 24px 100px; max-width: 1000px; margin: 0 auto; }
+    .section-label { text-align: center; font-size: 0.8rem; color: var(--purple); text-transform: uppercase; letter-spacing: 0.1em; font-weight: 600; margin-bottom: 16px; }
+    .section-title { text-align: center; font-size: clamp(1.8rem, 4vw, 2.6rem); font-weight: 700; letter-spacing: -0.03em; margin-bottom: 64px; }
+    .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
+    .feature-card { background: var(--surface); border: 1px solid var(--border); border-radius: 20px; padding: 32px; transition: border-color 0.2s; }
+    .feature-card:hover { border-color: rgba(167,139,250,0.3); }
+    .feature-icon { font-size: 2rem; margin-bottom: 16px; }
+    .feature-card h3 { font-size: 1.1rem; font-weight: 600; margin-bottom: 10px; letter-spacing: -0.02em; }
+    .feature-card p { font-size: 0.92rem; color: var(--text-secondary); line-height: 1.6; }
+
+    /* PREMIUM */
+    .premium { padding: 80px 24px 100px; max-width: 560px; margin: 0 auto; text-align: center; }
+    .premium-card { background: linear-gradient(135deg, rgba(124,58,237,0.15), rgba(167,139,250,0.05)); border: 1px solid rgba(167,139,250,0.2); border-radius: 28px; padding: 48px 40px; }
+    .premium-card h2 { font-size: 1.8rem; font-weight: 700; margin-bottom: 12px; letter-spacing: -0.03em; }
+    .premium-card p { color: var(--text-secondary); margin-bottom: 32px; }
+    .premium-features { list-style: none; text-align: left; margin-bottom: 36px; }
+    .premium-features li { display: flex; align-items: center; gap: 12px; padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 0.95rem; color: var(--text-secondary); }
+    .premium-features li:last-child { border-bottom: none; }
+    .check { color: var(--purple); font-size: 1.1rem; }
+
+    /* FOOTER */
+    footer { border-top: 1px solid var(--border); padding: 40px 24px; text-align: center; }
+    footer p { color: var(--text-dim); font-size: 0.85rem; }
+    footer a { color: var(--text-dim); text-decoration: none; margin: 0 12px; transition: color 0.2s; }
+    footer a:hover { color: var(--text-secondary); }
+
+    @media (max-width: 600px) {
+      nav { padding: 0 20px; }
+      .nav-links { display: none; }
+      .hero { padding: 90px 20px 60px; }
+    }
   </style>
 </head>
 <body>
 
-<h1>Privacy Policy</h1>
-<p class="updated">Last updated: 4 July 2026</p>
+<nav>
+  <a class="nav-logo" href="/moja-privacy/">Moja<span>.</span></a>
+  <div class="nav-links">
+    <a href="#features">Features</a>
+    <a href="#premium">Premium</a>
+    <a href="/moja-privacy/privacy.html">Privacy</a>
+  </div>
+</nav>
 
-<p>Moja: Focus ("Moja", "the app", "we", "us") is developed and operated by Joseph Kalolo ("I"). This Privacy Policy explains what information the app collects, how it is used, and your rights regarding that information.</p>
+<section class="hero">
+  <div class="hero-glow"></div>
+  <div class="hero-content">
+    <div class="hero-badge">✦ Now on the App Store</div>
+    <h1>One thing.<br><em>Done right.</em></h1>
+    <p>Moja is a radical focus app. Not a list. Not a system. Just your one thing — front and centre, until it's done.</p>
+    <div class="hero-cta">
+      <a class="btn-primary" href="https://apps.apple.com/app/id6758607770">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+        Download Free
+      </a>
+      <a class="btn-secondary" href="#features">See Features</a>
+    </div>
+  </div>
+</section>
 
-<h2>1. Information We Collect</h2>
-<p>Moja is designed to collect as little data as possible. Specifically:</p>
-<ul>
-  <li><strong>Anonymous identifier.</strong> When you first open the app, an anonymous authentication token is created via Firebase Authentication. This token is a random identifier — it is not linked to your name, email address, or any other personally identifiable information.</li>
-  <li><strong>Focus data.</strong> The text you enter as your focus task is stored locally on your device and, if you are signed in, in your account on Firebase. This data is used solely to power the app's core features (widget, Live Activities, streaks).</li>
-  <li><strong>Subscription status.</strong> If you purchase Moja Premium, Apple processes the payment and communicates your subscription status to the app. We do not receive your payment details, name, or Apple ID email address.</li>
-  <li><strong>Usage analytics.</strong> We may collect anonymised, aggregated usage data (e.g. feature usage counts) via Firebase Analytics to improve the app. This data cannot be used to identify you.</li>
-</ul>
+<section class="preview">
+  <div class="phone-frame">
+    <div class="phone-dot"></div>
+    <div style="text-align:center">
+      <div class="phone-task">Finish the pitch deck</div>
+      <div class="phone-sub" style="margin-top:6px">Your one thing today</div>
+      <div class="phone-streak" style="justify-content:center; margin-top:14px">
+        <span></span><span></span><span></span><span></span><span></span><span style="opacity:0.25"></span><span style="opacity:0.25"></span>
+      </div>
+      <div class="phone-sub" style="margin-top:8px">5-day streak 🔥</div>
+    </div>
+  </div>
+</section>
 
-<h2>2. Information We Do Not Collect</h2>
-<ul>
-  <li>Your name, email address, or phone number (unless you voluntarily create an account)</li>
-  <li>Your location</li>
-  <li>Your contacts, camera, or microphone</li>
-  <li>Any advertising identifiers</li>
-</ul>
+<section class="features" id="features">
+  <div class="section-label">Why Moja</div>
+  <h2 class="section-title">Built around one idea</h2>
+  <div class="features-grid">
+    <div class="feature-card">
+      <div class="feature-icon">🎯</div>
+      <h3>One thing only</h3>
+      <p>No task lists, no prioritisation anxiety. Set your Moja and focus on it completely. Everything else waits.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🔲</div>
+      <h3>Always-on widget</h3>
+      <p>Your focus lives on your Home Screen and Lock Screen. A constant, calm reminder of what matters right now.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">⚡</div>
+      <h3>Live Activities</h3>
+      <p>Your Moja appears on the Dynamic Island and Lock Screen while you work — no need to unlock your phone.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🔥</div>
+      <h3>Streak tracking</h3>
+      <p>Build a daily completion habit. Every time you mark your Moja done, your streak grows. Don't break the chain.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🎉</div>
+      <h3>Completion ceremony</h3>
+      <p>Finishing feels good. Moja marks the moment with a satisfying animation every time you complete your one thing.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🔔</div>
+      <h3>Smart reminders</h3>
+      <p>Set a due time and Moja reminds you when it matters — not with endless pings, but one clear nudge.</p>
+    </div>
+  </div>
+</section>
 
-<h2>3. How We Use Your Information</h2>
-<ul>
-  <li>To provide and maintain the core features of Moja</li>
-  <li>To sync your focus data across your devices (if signed in)</li>
-  <li>To verify your subscription status</li>
-  <li>To understand how the app is used and make improvements</li>
-</ul>
-<p>We do not sell, rent, or share your personal information with third parties for marketing purposes.</p>
+<section class="premium" id="premium">
+  <div class="premium-card">
+    <h2>Moja Premium</h2>
+    <p>Unlock everything. One subscription, no limits.</p>
+    <ul class="premium-features">
+      <li><span class="check">✦</span> Unlimited focus history</li>
+      <li><span class="check">✦</span> Advanced streak insights</li>
+      <li><span class="check">✦</span> Custom widget themes</li>
+      <li><span class="check">✦</span> Priority support</li>
+    </ul>
+    <a class="btn-primary" href="https://apps.apple.com/app/id6758607770" style="width:100%; justify-content:center;">
+      Get Premium in the App
+    </a>
+  </div>
+</section>
 
-<h2>4. Third-Party Services</h2>
-<p>Moja uses the following third-party services, each governed by their own privacy policies:</p>
-<ul>
-  <li><a href="https://firebase.google.com/support/privacy">Google Firebase</a> — anonymous authentication, cloud data storage, and analytics</li>
-  <li><a href="https://www.apple.com/legal/privacy/">Apple StoreKit</a> — in-app subscription management and payment processing</li>
-</ul>
-
-<h2>5. Data Retention</h2>
-<p>Your focus data is retained for as long as your account exists. If you delete your account from within the app, your data is permanently deleted from our servers within 30 days. Anonymised analytics data may be retained for up to 24 months.</p>
-
-<h2>6. Data Security</h2>
-<p>All data transmitted between the app and Firebase is encrypted in transit using TLS. We use Firebase's built-in security rules to ensure that each user can only access their own data.</p>
-
-<h2>7. Children's Privacy</h2>
-<p>Moja is not directed at children under the age of 13. We do not knowingly collect personal information from children under 13. If you believe a child has provided personal information, please contact us and we will delete it promptly.</p>
-
-<h2>8. Your Rights</h2>
-<p>Depending on your location, you may have the right to access, correct, or delete the personal data we hold about you. To exercise these rights, please contact us at the address below.</p>
-
-<h2>9. Changes to This Policy</h2>
-<p>We may update this Privacy Policy from time to time. We will notify you of any significant changes by updating the "Last updated" date above. Continued use of the app after changes constitutes acceptance of the revised policy.</p>
-
-<h2>10. Contact</h2>
-<p>If you have any questions about this Privacy Policy, please contact us at:<br>
-<strong>Joseph Kalolo</strong><br>
-<a href="mailto:85gx9x9jwt@privaterelay.appleid.com">85gx9x9jwt@privaterelay.appleid.com</a></p>
-
-<hr>
-<p style="font-size:0.85rem; color:#8e8e93;">© 2026 Joseph Kalolo. All rights reserved.</p>
+<footer>
+  <p>
+    © 2026 Joseph Kalolo &nbsp;·&nbsp;
+    <a href="/moja-privacy/privacy.html">Privacy Policy</a>
+    <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/">Terms of Use</a>
+    <a href="mailto:85gx9x9jwt@privaterelay.appleid.com">Contact</a>
+  </p>
+</footer>
 
 </body>
 </html>
